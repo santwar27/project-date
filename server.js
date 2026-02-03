@@ -1,29 +1,42 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // Added this to help with file paths!
+const path = require('path');
+const fs = require('fs'); // This tool lets the server write files!
 const app = express();
 
-// Render will tell us which port to use, or we use 3000 at home
 const port = process.env.PORT || 3000; 
 
 app.use(cors());
 app.use(express.json());
-
-// This line is super important! It tells Render to serve your 
-// HTML, CSS, and JS files to anyone who visits the link.
 app.use(express.static(path.join(__dirname, '.')));
 
 app.post('/save-date', (req, res) => {
+    // 1. Create a nice string of the date info
+    const dateEntry = `New Date: ${req.body.food} at ${req.body.where} on ${req.body.when}\n`;
+
+    // 2. Save it to a file named 'dates.txt'
+    // 'a' means "append" - it adds to the end of the file instead of overwriting it!
+    fs.appendFile('dates.txt', dateEntry, (err) => {
+        if (err) {
+            console.log("Oops, couldn't save to the file!");
+        } else {
+            console.log("Success! Saved to dates.txt");
+        }
+    });
+
+    // Still keep the console logs for the vibes
     console.log("\x1b[35m%s\x1b[0m", "--- OH MY GOSH, A DATE IS PLANNED! ---");
-    console.log("Food Type:", req.body.food);
-    console.log("Restaurant:", req.body.where);
-    console.log("\x1b[32m%s\x1b[0m", "Date scheduled: " + req.body.when);
-    console.log("---------------------------------------");
+    console.log(dateEntry);
 
     res.send({ status: "Success! See you then!" });
 });
 
-// We have to serve the index.html file when someone goes to the main URL
+// A secret way for YOU to see all the dates in your browser!
+// If you go to your-url.com/view-dates, it will show you the list.
+app.get('/view-dates', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dates.txt'));
+});
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
