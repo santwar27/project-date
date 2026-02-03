@@ -1,0 +1,56 @@
+/* I love these colors together! */
+body {
+    background-color: mistyrose;
+    font-family: 'Ubuntu', sans-serif;
+    color: #333;
+    text-align: center;
+    padding-top: 50px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: darkred;
+    font-size: 3rem;
+}
+
+.container {
+    background-color: cornsilk;
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px;
+    border: 5px dashed lightpink;
+    border-radius: 20px;
+}
+
+.food-list button {
+    background-color: lightpink;
+    border: none;
+    padding: 15px;
+    margin: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s; /* Make it zoom a little when hovering */
+}
+
+.food-list button:hover {
+    background-color: darkred;
+    color: white;
+    transform: scale(1.1);
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid lightpink;
+}
+
+#submitBtn {
+    background-color: darkred;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

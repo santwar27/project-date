@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Retro Date Planner <3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>What are we eating?</h1>
+        <p>Pick a vibe and let's go!</p>
+
+        <div class="food-list">
+            <button onclick="pickFood('Fish & Chips')">🐟 Fish & Chips</button>
+            <button onclick="pickFood('Sunday Roast')">🥩 Sunday Roast</button>
+            <button onclick="pickFood('Afternoon Tea')">☕ Afternoon Tea</button>
+            <button onclick="pickFood('Full English')">🍳 Full English</button>
+            <button onclick="pickFood('Shepherds Pie')">🥧 Shepherd's Pie</button>
+            <button onclick="pickFood('Beef Wellington')">🥐 Beef Wellington</button>
+            <button onclick="pickFood('Cornish Pasty')">🥟 Cornish Pasty</button>
+            <button onclick="pickFood('Chicken Tikka Masala')">🍛 Chicken Tikka Masala</button>
+        </div>
+
+        <div id="date-form" style="display: none;">
+            <hr>
+            <h3>Great choice! Now, let's make it official:</h3>
+            <p>I opened Google Maps in a new tab for you to find a spot!</p>
+            
+            <input type="text" id="restaurantName" placeholder="Which restaurant?">
+            <br>
+            <input type="date" id="datePicker">
+            <br>
+            <button id="submitBtn" onclick="saveDate()">Lock it in! ❤️</button>
+        </div>
+
+        <h2 id="finalMessage" style="display: none; color: darkred;">It's a date! <3</h2>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
